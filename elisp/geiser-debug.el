@@ -185,12 +185,13 @@ buffer.")
               (insert "\n" (if key (format "%s\n" key) "") output "\n")))
         (when after
           (goto-char (point-max))
-          (insert "\nExpression evaluated was:\n\n")
-          (insert what "\n"))
-        (cl-case geiser-debug-treat-ansi-colors
-          (colors (ansi-color-apply-on-region (point-min) (point-max)))
-          (remove (ansi-color-filter-region (point-min) (point-max))))
-        (goto-char (point-min)))
+          ;; (insert "\nExpression evaluated was:\n\n")
+          ;; (insert what "\n")
+          )
+          (cl-case geiser-debug-treat-ansi-colors
+            (colors (ansi-color-apply-on-region (point-min) (point-max)))
+            (remove (ansi-color-filter-region (point-min) (point-max))))
+          (goto-char (point-min)))
       (when (or img err output)
         (when (or geiser-debug-jump-to-debug-p geiser-debug-show-debug-p)
           (if geiser-debug-jump-to-debug-p
